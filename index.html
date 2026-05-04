@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emeka John Ajuzie — Creative Director · Art / 3D</title>
+<meta name="description" content="Creative Director, Art Director, and 3D Generalist. 19 years of work for Hennessy, Campari, Renault, Google, Heineken, FirstBank, and more." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ─────────────────────────────────────────────────────────────────────────
+     Tokens
+     ───────────────────────────────────────────────────────────────────────── */
+  :root {
+    --bg:        #0a0a0a;
+    --bg-2:      #121212;
+    --ink:       #f5f1ea;
+    --ink-mute:  #8a857d;
+    --ink-dim:   #4a4640;
+    --accent:    #c9a961;          /* warm brass — editorial, not gaudy */
+    --rule:      #1f1d1a;
+    --serif:     'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    --mono:      'JetBrains Mono', 'IBM Plex Mono', monospace;
+    --grid-gap:  1px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* Subtle film grain — adds editorial texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Nav
+     ───────────────────────────────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.92), rgba(10,10,10,0));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+  }
+
+  nav .mark {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  nav .mark span { color: var(--accent); }
+
+  nav .links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav .links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  nav .links a:hover { color: var(--ink); }
+
+  nav .links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.7,0,0.3,1);
+  }
+
+  nav .links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.25rem; }
+    nav .links { gap: 1.25rem; }
+    nav .links a { font-size: 0.62rem; letter-spacing: 0.12em; }
+    nav .mark { font-size: 0.62rem; letter-spacing: 0.12em; }
+  }
+  @media (max-width: 480px) {
+    nav .mark { display: none; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Hero
+     ───────────────────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 3rem;
+    position: relative;
+  }
+
+  .hero .meta-top {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+
+  .hero .meta-top .right {
+    color: var(--accent);
+  }
+
+  /* Byline + portrait in hero meta row */
+  .hero .byline {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .hero .portrait {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--ink-dim);
+    background: var(--bg-2);
+    box-shadow: 0 0 0 4px rgba(201, 169, 97, 0.06);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .hero .portrait:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(201, 169, 97, 0.18);
+  }
+
+  .hero .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(0.1) contrast(1.05);
+  }
+
+  .hero .byline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    line-height: 1.1;
+  }
+
+  .hero .byline-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .hero .byline-role {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  @media (max-width: 540px) {
+    .hero .portrait { width: 44px; height: 44px; }
+    .hero .byline-name { font-size: 0.85rem; }
+    .hero .byline { gap: 0.7rem; }
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.8rem, 9vw, 8.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+
+  .hero .lead {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: end;
+  }
+
+  @media (min-width: 880px) {
+    .hero .lead { grid-template-columns: 2fr 1fr; }
+  }
+
+  .hero .blurb {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.55;
+    max-width: 52ch;
+    color: var(--ink);
+  }
+
+  .hero .blurb p + p { margin-top: 1rem; }
+
+  .hero .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  .hero .stat .num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero .stat .label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 0.5rem;
+  }
+
+  .hero .scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero .scroll::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--accent);
+    animation: dash 2.4s ease-in-out infinite;
+    transform-origin: left;
+  }
+
+  @keyframes dash {
+    0%, 100% { transform: scaleX(1); }
+    50%      { transform: scaleX(0.3); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Section frame
+     ───────────────────────────────────────────────────────────────────────── */
+  section { padding: 6rem 2.5rem; position: relative; }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    margin-bottom: 3.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .section-head .label { color: var(--accent); }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin-bottom: 4rem;
+    max-width: 18ch;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Hero reel — featured work
+     ───────────────────────────────────────────────────────────────────────── */
+  .reel { padding-top: 2rem; }
+
+  .featured {
+    display: grid;
+    gap: 6rem;
+  }
+
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 880px) {
+    .feature { grid-template-columns: 7fr 5fr; gap: 4rem; }
+    .feature.flip { grid-template-columns: 5fr 7fr; }
+    .feature.flip .feature-art { order: 2; }
+    .feature.flip .feature-copy { order: 1; }
+  }
+
+  .feature-art {
+    overflow: hidden;
+    background: var(--bg-2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-art img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 1.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+
+  .feature:hover .feature-art img { transform: scale(1.04); }
+
+  .feature-copy .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .feature-copy h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .feature-copy h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .feature-copy .client {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-copy p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 42ch;
+  }
+
+  .feature-copy .tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Case study — Tiger Uncaged
+     ───────────────────────────────────────────────────────────────────────── */
+  .case-study {
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0a08 50%, var(--bg) 100%);
+    padding: 6rem 2.5rem 8rem;
+  }
+
+  .cs-intro {
+    max-width: 820px;
+    margin-bottom: 4rem;
+  }
+
+  .cs-lede {
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 56ch;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .cs-mosaic {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 880px) {
+    .cs-mosaic {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+    }
+    .cs-mosaic .cs-large {
+      grid-row: 1 / 3;
+    }
+  }
+
+  .cs-tile {
+    overflow: hidden;
+    background: var(--bg-2);
+    position: relative;
+    border: 1px solid var(--rule);
+  }
+
+  .cs-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+
+  .cs-tile:hover img { transform: scale(1.04); }
+
+  .cs-tile.cs-large {
+    min-height: 480px;
+  }
+
+  .cs-wide {
+    margin: 1rem 0;
+    overflow: hidden;
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+  }
+
+  .cs-wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .cs-duo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 720px) {
+    .cs-duo { grid-template-columns: 1fr 1.4fr; }
+  }
+
+  .cs-bottle, .cs-motion {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cs-bottle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 380px;
+  }
+
+  .cs-bottle img {
+    max-width: 60%;
+    max-height: 420px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 50px rgba(0,0,0,0.5));
+  }
+
+  .cs-motion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+  }
+
+  .cs-motion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cs-cap {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.95), rgba(10,10,10,0));
+  }
+
+  .cs-cap-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .cs-cap-meta {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .cs-credits {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+  }
+
+  @media (min-width: 720px) {
+    .cs-credits { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  }
+
+  .cs-credit-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 0.5rem;
+  }
+
+  .cs-credit-val {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Archive grid — every other piece
+     ───────────────────────────────────────────────────────────────────────── */
+  .archive .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--grid-gap);
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .tile {
+    background: var(--bg-2);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .tile img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.4s cubic-bezier(0.2,0.7,0.2,1),
+                filter 0.5s ease;
+    filter: grayscale(0.15) brightness(0.92);
+  }
+
+  .tile:hover img {
+    transform: scale(1.06);
+    filter: grayscale(0) brightness(1);
+  }
+
+  .tile .caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.95) 30%, rgba(10,10,10,0));
+    transform: translateY(40%);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.2,0.7,0.2,1);
+  }
+
+  .tile:hover .caption {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .tile .caption .name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .tile .caption .meta {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Filter pills */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .filters button {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filters button:hover { color: var(--ink); border-color: var(--ink-dim); }
+  .filters button.active {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     About / CV
+     ───────────────────────────────────────────────────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media (min-width: 880px) {
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 6rem; }
+  }
+
+  .bio p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    max-width: 50ch;
+  }
+
+  .bio p:first-of-type::first-letter {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 4.5rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.3rem 0.7rem 0 0;
+    color: var(--accent);
+  }
+
+  /* CV / experience */
+  .cv h4 {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cv h4:not(:first-child) { margin-top: 3rem; }
+
+  .cv-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (min-width: 540px) {
+    .cv-row {
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: baseline;
+    }
+  }
+
+  .cv-row .role {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .cv-row .role em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .cv-row .where {
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  .cv-row .when {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+
+  .award-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .award-row .name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+
+  .award-row .name span {
+    font-style: normal;
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+  }
+
+  .award-row .yr {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+
+  /* Skills tag cloud */
+  .skill-cluster { margin-top: 2rem; }
+  .skill-cluster h5 {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 0.8rem;
+  }
+  .skill-cluster .pills {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .skill-cluster .pill {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    padding: 0.45rem 0.85rem;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Clients marquee
+     ───────────────────────────────────────────────────────────────────────── */
+  .clients {
+    background: var(--bg-2);
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  .clients .heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .clients .heading .label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .clients .heading h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: var(--ink);
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 50s linear infinite;
+    flex-shrink: 0;
+    padding-right: 4rem;
+  }
+
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+
+  .marquee-track span {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    color: var(--ink-mute);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+
+  .marquee-track span:hover { color: var(--accent); }
+
+  .marquee-track span::after {
+    content: '·';
+    margin-left: 4rem;
+    color: var(--ink-dim);
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Contact
+     ───────────────────────────────────────────────────────────────────────── */
+  .contact {
+    padding: 8rem 2.5rem 5rem;
+    text-align: center;
+  }
+
+  .contact .pre {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .contact h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .contact .email {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.3rem;
+    transition: color 0.3s ease;
+  }
+
+  .contact .email:hover { color: var(--accent); }
+
+  .contact .links-row {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .contact .links-row a {
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.2rem;
+  }
+
+  .contact .links-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Footer */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.2,0.7,0.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,5,0.97);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .lightbox .close {
+    position: absolute;
+    top: 1.5rem; right: 1.8rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    background: none;
+    border: 1px solid var(--ink-dim);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .lightbox .close:hover { color: var(--accent); border-color: var(--accent); }
+  .lightbox .meta {
+    position: absolute;
+    bottom: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+  }
+  .lightbox .meta .name { color: var(--accent); margin-right: 1rem; }
+
+  /* Mobile tweaks */
+  @media (max-width: 720px) {
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 6rem 1.25rem 4rem; }
+    .hero .scroll { left: 1.25rem; }
+    .archive .grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#top" class="mark">Emeka Ajuzie<span> · </span>CD</a>
+  <ul class="links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────────────────────────── -->
+<header class="hero" id="top">
+  <div class="meta-top">
+    <div class="byline">
+      <div class="portrait">
+        <img src="img/emeka-portrait.jpg" alt="Emeka Ajuzie" />
+      </div>
+      <div class="byline-text">
+        <div class="byline-name">Emeka John Ajuzie</div>
+        <div class="byline-role">Folio · MMXXVI</div>
+      </div>
+    </div>
+    <span class="right">Lagos · Nigeria</span>
+  </div>
+
+  <h1>Stories told <em>in pictures.</em><br/>Pictures told with <em>purpose.</em></h1>
+
+  <div class="lead">
+    <div class="blurb">
+      <p>Hi, I'm Emeka — a Creative Director and 3D generalist with nineteen years of creative battle scars in advertising to show off. I've been humbled to work on several ground-breaking campaigns spanning print, digital, and experiential.</p>
+      <p>The fast-paced, ever-changing nature of the work demands you stay ahead of the curve — over time, I've sharpened the skills to do just that. I'm an expert user of Adobe design tools (Photoshop, Illustrator, XD) as well as 3D software like Cinema 4D and Blender. What follows is a small slice of the work. Walk with me.</p>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">19</div>
+        <div class="label">Years in the trenches</div>
+      </div>
+      <div class="stat">
+        <div class="num">60+</div>
+        <div class="label">Brands shipped</div>
+      </div>
+      <div class="stat">
+        <div class="num">DDB</div>
+        <div class="label">Lagos · Current</div>
+      </div>
+      <div class="stat">
+        <div class="num">2024</div>
+        <div class="label">LIFE Award · Art Direction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll">Scroll</div>
+</header>
+
+<!-- ── FEATURED REEL ──────────────────────────────────────────────────────── -->
+<section class="reel" id="work">
+  <div class="section-head">
+    <span class="label">01 · Selected Work</span>
+    <span>Reel</span>
+  </div>
+
+  <h2 class="section-title">Work I am <em>proud</em> to put my name on.</h2>
+
+  <div class="featured">
+
+    <article class="feature reveal">
+      <div class="feature-art"><img src="img/tiger/tiger-coasters.jpg" alt="Tiger Beer — Uncaged Campaign" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 01</div>
+        <h3>Uncaged. <em>Unmistakably Tiger.</em></h3>
+        <div class="client">Tiger Beer · Uncaged Brand World</div>
+        <p>An end-to-end visual world for Tiger Beer — from on-trade coasters and a custom Tiger varsity bomber, to the high-energy light-curtain that anchored the launch reel. Heritage stripes, modern street.</p>
+        <div class="tags"><span>Brand World</span><span>Apparel</span><span>On-Trade</span><span>Motion</span></div>
+      </div>
+    </article>
+
+    <article class="feature flip reveal">
+      <div class="feature-art"><img src="img/hennessy-1.jpg" alt="Hennessy — No Filter, No Facade" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 02</div>
+        <h3>No filter. <em>No facade.</em></h3>
+        <div class="client">Hennessy · Straight Up Series</div>
+        <p>A portrait series for Hennessy Cognac that strips away artifice — shot in B&amp;W against a single, intentional color cue. Heritage as honesty, distilled into an editorial pause.</p>
+        <div class="tags"><span>Art Direction</span><span>Print</span><span>Brand Campaign</span></div>
+      </div>
+    </article>
+
+    <article class="feature reveal">
+      <div class="feature-art"><img src="img/campari-3.jpg" alt="Campari — No Stop In Us" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 03</div>
+        <h3>No stop <em>in us.</em></h3>
+        <div class="client">Campari · Passion Chasers Tour</div>
+        <p>A 360 campaign rooted in motion — illustration, photography, packaging and event identity built around Campari's tour platform. Red as fuel; passion as system.</p>
+        <div class="tags"><span>Concept</span><span>Illustration</span><span>Activation</span></div>
+      </div>
+    </article>
+
+    <article class="feature flip reveal">
+      <div class="feature-art"><img src="img/7up-2.jpg" alt="7Up — Bottle as Canvas" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 04</div>
+        <h3>The bottle, <em>retold.</em></h3>
+        <div class="client">7Up · Bottle Art Series</div>
+        <p>A 3D series that re-imagined the iconic 7Up green bottle through Nigerian visual language — pattern, sculpture, levitation, light. Eight executions, one continuous green.</p>
+        <div class="tags"><span>3D</span><span>Concept</span><span>Look Dev</span></div>
+      </div>
+    </article>
+
+    <article class="feature reveal">
+      <div class="feature-art"><img src="img/renault-getin.jpg" alt="Renault Logan — Get in. Stand out." loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 05</div>
+        <h3>Get in. <em>Stand out.</em></h3>
+        <div class="client">Renault Logan · Launch Campaign</div>
+        <p>A modelmaker's Paris in CG — paper Eiffels and a real Logan against a single horizon. The launch series for Renault Nigeria, built around joy, simplicity, and a French line of sight.</p>
+        <div class="tags"><span>Art Direction</span><span>3D</span><span>Print Campaign</span></div>
+      </div>
+    </article>
+
+    <article class="feature flip reveal">
+      <div class="feature-art"><img src="img/firstmonie-women.jpg" alt="FirstBank · Firstmonie — Making Women Empowerment a Reality" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 06</div>
+        <h3>Make it <em>real.</em></h3>
+        <div class="client">FirstBank · Firstmonie Agent Network</div>
+        <p>A multi-year platform across print, digital, and illustrated long-form — repositioning Firstmonie's 70,000-strong agent network as the human face of financial inclusion across Nigeria.</p>
+        <div class="tags"><span>Brand Platform</span><span>Print</span><span>Illustration</span></div>
+      </div>
+    </article>
+
+    <article class="feature reveal">
+      <div class="feature-art"><img src="img/youtube-booth.jpg" alt="YouTube — For Every You activation" loading="lazy"/></div>
+      <div class="feature-copy">
+        <div class="num">F · 07</div>
+        <h3>Built for the <em>floor.</em></h3>
+        <div class="client">YouTube · Google · Visa · Red Bull</div>
+        <p>Selected experiential and 3D-architectural builds — booths, installations, and activation environments designed end-to-end in Cinema 4D, then delivered to spec on the ground.</p>
+        <div class="tags"><span>Experiential</span><span>3D Design</span><span>Look Dev</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ── CASE STUDY: TIGER UNCAGED ──────────────────────────────────────────── -->
+<section class="case-study" id="case-tiger">
+  <div class="section-head">
+    <span class="label">01.5 · Case Study</span>
+    <span>Tiger · Uncaged</span>
+  </div>
+
+  <div class="cs-intro">
+    <h2 class="section-title">A whole world, <em>let loose.</em></h2>
+    <p class="cs-lede">Tiger Beer asked for more than an ad — they wanted a brand world. The Uncaged platform spans on-trade, apparel, and motion: the coaster on the bar, the bomber on the back of the brand crew, the light-curtain that opens every drop.</p>
+  </div>
+
+  <!-- Asymmetric mosaic -->
+  <div class="cs-mosaic">
+    <div class="cs-tile cs-large"><img src="img/tiger/tiger-jacket-male.jpg" alt="Tiger varsity bomber — back, on model" loading="lazy"/></div>
+    <div class="cs-tile"><img src="img/tiger/tiger-jacket-back.jpg" alt="Bomber back flat" loading="lazy"/></div>
+    <div class="cs-tile"><img src="img/tiger/tiger-jacket-front.jpg" alt="Bomber front flat" loading="lazy"/></div>
+  </div>
+
+  <!-- Wide shot — female model -->
+  <div class="cs-wide">
+    <img src="img/tiger/tiger-jacket-female.jpg" alt="Tiger bomber on model — editorial wide" loading="lazy"/>
+  </div>
+
+  <!-- Bottle + GIF row -->
+  <div class="cs-duo">
+    <div class="cs-bottle">
+      <img src="img/tiger/tiger-bottle.jpg" alt="Tiger Beer bottle — hero shot" loading="lazy"/>
+      <div class="cs-cap">
+        <div class="cs-cap-name">The Hero · Since 1932</div>
+        <div class="cs-cap-meta">Bottle · Brand Anchor</div>
+      </div>
+    </div>
+    <div class="cs-motion">
+      <img src="img/tiger/uncaged.gif" alt="Uncaged motion loop — light curtain" loading="lazy"/>
+      <div class="cs-cap">
+        <div class="cs-cap-name">Uncaged · Motion Loop</div>
+        <div class="cs-cap-meta">Title Sequence · Drop Reveal</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coaster lifestyle close-out -->
+  <div class="cs-wide">
+    <img src="img/tiger/tiger-coasters.jpg" alt="Tiger coasters — bar lifestyle" loading="lazy"/>
+  </div>
+
+  <div class="cs-credits">
+    <div class="cs-credit">
+      <div class="cs-credit-label">Role</div>
+      <div class="cs-credit-val">Creative Direction · Art Direction · Look Dev</div>
+    </div>
+    <div class="cs-credit">
+      <div class="cs-credit-label">Deliverables</div>
+      <div class="cs-credit-val">Coasters · Apparel · Motion · Brand World</div>
+    </div>
+    <div class="cs-credit">
+      <div class="cs-credit-label">Year</div>
+      <div class="cs-credit-val">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHIVE GRID ───────────────────────────────────────────────────────── -->
+<section class="archive">
+  <div class="section-head">
+    <span class="label">02 · The Archive</span>
+    <span>All Work</span>
+  </div>
+
+  <h2 class="section-title">A <em>broader</em> look.</h2>
+
+  <div class="filters">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="print">Print</button>
+    <button data-filter="3d">3D / Look Dev</button>
+    <button data-filter="digital">Digital</button>
+    <button data-filter="event">Experiential</button>
+    <button data-filter="illustration">Illustration</button>
+  </div>
+
+  <div class="grid" id="grid"><!-- populated by JS --></div>
+</section>
+
+<!-- ── ABOUT + CV ─────────────────────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="section-head">
+    <span class="label">03 · The Person</span>
+    <span>About · CV</span>
+  </div>
+
+  <h2 class="section-title">A long road, <em>still walking.</em></h2>
+
+  <div class="about-grid">
+    <div class="bio">
+      <p>Hi, I'm Emeka — a Creative Director and 3D generalist with nineteen years of creative battle scars to show off. I count myself humbled to have worked on several ground-breaking campaigns ranging from print and digital to experiential.</p>
+      <p>I currently lead creative at DDB Lagos. Before that, I led teams at Tequila Nigeria, TCC (Insight Publicis Groupe), and Synthesis — building campaigns for Hennessy, Campari, Tiger Beer, Renault, Pepsi, FirstBank, MRS Oil, 7Up, Cadbury, Heineken, Google, YouTube, Visa, and many more.</p>
+      <p>Working in the fast-paced, ever-changing advertising environment requires one to stay abreast of design trends — and over time, I've acquired the skills necessary to stay ahead of the curve. I'm an expert user of Adobe design tools like Photoshop, Illustrator, and XD, as well as 3D design software like Cinema 4D and Blender. The tools are the easy part. The harder, more enduring craft is knowing what is worth making in the first place.</p>
+
+      <div class="skill-cluster" id="cv">
+        <h5>Toolkit</h5>
+        <div class="pills">
+          <span class="pill">Photoshop</span>
+          <span class="pill">Illustrator</span>
+          <span class="pill">CorelDRAW</span>
+          <span class="pill">Cinema 4D</span>
+          <span class="pill">Blender</span>
+          <span class="pill">ZBrush</span>
+          <span class="pill">Octane</span>
+          <span class="pill">Redshift</span>
+          <span class="pill">Keyshot</span>
+          <span class="pill">After Effects</span>
+          <span class="pill">Figma</span>
+          <span class="pill">XD</span>
+          <span class="pill">Sketchup Pro</span>
+          <span class="pill">Midjourney</span>
+          <span class="pill">Runway ML</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv">
+      <h4>Experience</h4>
+
+      <div class="cv-row">
+        <div class="role">
+          <em>Creative Director</em>
+          <span class="where">DDB Lagos</span>
+        </div>
+        <div class="when">Aug 2025 — Now</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Associate Creative Director, Art
+          <span class="where">DDB Lagos</span>
+        </div>
+        <div class="when">2022 — 2025</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Creative Manager
+          <span class="where">Tequila Nigeria</span>
+        </div>
+        <div class="when">2020 — 2022</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Creative Lead
+          <span class="where">TCC · Insight Publicis Groupe</span>
+        </div>
+        <div class="when">2018 — 2020</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Senior Art Director / Concept Design
+          <span class="where">Tequila Nigeria</span>
+        </div>
+        <div class="when">2013 — 2018</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Art Director / Concept Design
+          <span class="where">Synthesis Cerebral Media</span>
+        </div>
+        <div class="when">2012 — 2013</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Art Director / Graphic Designer
+          <span class="where">Carto &amp; Carla</span>
+        </div>
+        <div class="when">2012</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          Art Director (Internship)
+          <span class="where">SO&amp;U</span>
+        </div>
+        <div class="when">2009</div>
+      </div>
+
+      <h4>Recognition</h4>
+
+      <div class="award-row">
+        <div class="name">LIFE Award <span>· Best Art Direction</span></div>
+        <div class="yr">2024</div>
+      </div>
+      <div class="award-row">
+        <div class="name">Press Merit Award <span>· University of Ibadan, Sociology</span></div>
+        <div class="yr"></div>
+      </div>
+      <div class="award-row">
+        <div class="name">Mograph &amp; Broadcast Design <span>· Maxon Cineversity (Spetsnaz)</span></div>
+        <div class="yr"></div>
+      </div>
+
+      <h4>Education</h4>
+
+      <div class="cv-row">
+        <div class="role">
+          Art Direction
+          <span class="where">Miami Ad School</span>
+        </div>
+        <div class="when">2010</div>
+      </div>
+      <div class="cv-row">
+        <div class="role">
+          B.Sc. Sociology
+          <span class="where">University of Ibadan</span>
+        </div>
+        <div class="when">2001 — 2005</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENTS ────────────────────────────────────────────────────────────── -->
+<section class="clients">
+  <div class="heading">
+    <span class="label">04 · Clients</span>
+    <h3>People who trusted the work.</h3>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="track1">
+      <span>Hennessy</span><span>Campari</span><span>Tiger Beer</span><span>Renault</span><span>Heineken</span>
+      <span>FirstBank</span><span>Pepsi</span><span>Google</span><span>YouTube</span>
+      <span>Visa</span><span>Cadbury</span><span>7Up</span><span>MRS Oil</span>
+      <span>Spectranet</span><span>9mobile</span><span>Wakanow</span><span>Nigerian Breweries</span>
+      <span>Pernod Ricard</span><span>Disaronno</span><span>Lord's Gin</span><span>Interswitch</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="pre">05 · Get in touch</div>
+  <h2>Have something <em>worth making?</em></h2>
+  <a href="mailto:emekaajuzie@gmail.com" class="email">emekaajuzie@gmail.com</a>
+  <div class="links-row">
+    <a href="tel:+2348067031785">+234 80 6703 1785</a>
+    <a href="https://behance.com/emekaajuzie" target="_blank" rel="noopener">Behance</a>
+    <a href="https://www.linkedin.com/in/emeka-ajuzie-00093729" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://instagram.com/emeka785" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://youtu.be/tmsN8a0wLpI" target="_blank" rel="noopener">Showreel</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Emeka Ajuzie · MMXXVI</span>
+  <span>Lagos, Nigeria</span>
+</footer>
+
+<!-- ── LIGHTBOX ───────────────────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lbClose">Close ✕</button>
+  <img id="lbImg" src="" alt="" />
+  <div class="meta"><span class="name" id="lbName"></span><span id="lbClient"></span></div>
+</div>
+
+<script>
+  // ──────────────────────────────────────────────────────────────────────────
+  // Archive data
+  // ──────────────────────────────────────────────────────────────────────────
+  const ARCHIVE = [
+    // Tiger Beer · Uncaged
+    { img:"tiger/tiger-jacket-male.jpg", name:"Uncaged · Bomber, Back",  client:"Tiger Beer",        cats:["print","digital"] },
+    { img:"tiger/tiger-jacket-female.jpg", name:"Uncaged · Editorial",   client:"Tiger Beer",        cats:["print","digital"] },
+    { img:"tiger/tiger-jacket-front.jpg", name:"Uncaged · Bomber, Front", client:"Tiger Beer",       cats:["print"] },
+    { img:"tiger/tiger-coasters.jpg",    name:"Uncaged · On-Trade",      client:"Tiger Beer",        cats:["print","event"] },
+
+    // Print campaigns
+    { img:"strikeforce.jpg",         name:"Unleash the Force Within", client:"Strike Energy",        cats:["print"] },
+    { img:"renault-joie.jpg",        name:"Joie de vivre",            client:"Renault",              cats:["print","3d"] },
+    { img:"renault-salut.jpg",       name:"Salut Nigeria",            client:"Renault",              cats:["print","3d"] },
+    { img:"premierbet-thebig1.jpg",  name:"The Big 1",                client:"PremierBet · Baba Ijebu", cats:["print","3d"] },
+    { img:"premierbet-youplay.jpg",  name:"You Play, We Pay",         client:"PremierBet",           cats:["print","3d"] },
+    { img:"beats-soundcraft.jpg",    name:"Sound Craft",              client:"Beats by Dre",         cats:["print","3d"] },
+    { img:"ashakacem.jpg",           name:"Dark & Solid",             client:"AshakaCem",            cats:["print","3d"] },
+    { img:"angryhair.jpg",           name:"Angry Hair Day",           client:"Botanic Origins",      cats:["print"] },
+    { img:"artequick.jpg",           name:"Feel better… quick",       client:"Artequick",            cats:["print","3d"] },
+    { img:"firstbank-nigeria.jpg",   name:"Nigeria First / 70,000 Strong", client:"FirstBank · Firstmonie", cats:["print"] },
+    { img:"tingg.jpg",                name:"Work is Hard…",            client:"Tingg",                cats:["print"] },
+    { img:"spectranet.jpg",          name:"4G Fast",                  client:"Spectranet",           cats:["print","3d"] },
+    { img:"wakanow.jpg",              name:"Slide to your destination", client:"Wakanow",             cats:["print","3d"] },
+    { img:"climate.jpg",             name:"Isn't She Sick of Us?",    client:"Climate Awareness",    cats:["print","illustration"] },
+    { img:"mrs-u12.jpg",             name:"Kick-Starting Dreams",     client:"MRS Oil · U-12 Cup",   cats:["print","illustration"] },
+    { img:"marlianday.jpg",          name:"Marlian Day · Live",       client:"Eclipse Live",         cats:["print","digital"] },
+    { img:"7up-1.jpg",                name:"Bottle Art Series I",      client:"7Up",                  cats:["print","3d"] },
+    { img:"7up-2.jpg",                name:"Bottle Art Series II",     client:"7Up",                  cats:["print","3d"] },
+    { img:"ntel-angel.jpg",          name:"Angel Data Plan",          client:"Ntel",                 cats:["print","illustration"] },
+    { img:"cadbury-yummy.jpg",       name:"Always the Same Yummy",    client:"Cadbury Heroes",       cats:["print","3d"] },
+    { img:"bettergas-1.jpg",         name:"Better Days I",            client:"BetterGas",            cats:["print","digital"] },
+    { img:"bettergas-2.jpg",         name:"Better Days II",           client:"BetterGas",            cats:["print","digital"] },
+    { img:"bettergas-3.jpg",         name:"Better Days III",          client:"BetterGas",            cats:["print","digital"] },
+
+    // Hennessy series — feature shows hennessy-1; archive shows the rest
+    { img:"hennessy-2.jpg",          name:"No Tricks, Just Tradition", client:"Hennessy",            cats:["print"] },
+    { img:"hennessy-3.jpg",          name:"No Hype, Just Heritage",   client:"Hennessy",             cats:["print"] },
+    { img:"hennessy-4.jpg",          name:"Undiluted, Unmistakable",  client:"Hennessy",             cats:["print"] },
+
+    { img:"lords-gin.jpg",           name:"Add flavour to your city", client:"Lord's Chocolate Gin", cats:["print","3d"] },
+    { img:"supreme-chicken.jpg",     name:"Our chicken is cooler",    client:"Supreme Noodles",      cats:["print"] },
+
+    // Campari extra
+    { img:"campari-1.jpg",            name:"No Stop in Us · Display",  client:"Campari",              cats:["print","3d"] },
+    { img:"campari-2.jpg",            name:"Passion Chasers",          client:"Campari",              cats:["print","illustration"] },
+
+    { img:"pepsi-runam.jpg",          name:"Run Am!",                  client:"Pepsi Lagos Marathon", cats:["print","illustration"] },
+
+    // Digital / social
+    { img:"interswitch-mother.jpg",   name:"Doing the Most Since…",   client:"Interswitch · Quickteller", cats:["digital","illustration"] },
+    { img:"interswitch-indep.jpg",    name:"Off to Celebrate Freedom", client:"Interswitch",         cats:["digital","3d"] },
+    { img:"interswitch-worker.jpg",   name:"No Work, No Crime",        client:"Interswitch",         cats:["digital"] },
+    { img:"firstmonie-plane.jpg",     name:"Selfie Reporter",          client:"Firstmonie",           cats:["digital","illustration"] },
+    { img:"firstmonie-illus.jpg",     name:"Street Illustration",     client:"Firstmonie",           cats:["illustration"] },
+    { img:"overdose.jpg",             name:"Game Overdose",            client:"World Overdose Day",   cats:["digital","3d"] },
+    { img:"covid-rules.jpg",          name:"The Rules Have Changed",   client:"COVID Awareness",     cats:["digital","3d"] },
+    { img:"redcheetah.jpg",           name:"World of Freedom",         client:"Red Cheetah",         cats:["digital"] },
+
+    // Illustration
+    { img:"quiteasy.jpg",             name:"#QuitEasy",                client:"IQS Nigeria",         cats:["illustration"] },
+    { img:"mi-xtreme.jpg",            name:"M.I Xtreme · Mc Battles",  client:"Aboki Games",         cats:["illustration"] },
+    { img:"edexcel.jpg",              name:"Pioneering Computers",     client:"Edexcel",              cats:["illustration"] },
+    { img:"firstmonie-women.jpg",     name:"Empowerment, Pink Series", client:"Firstmonie",           cats:["print"] },
+
+    // Annual reports
+    { img:"mrs-annual.jpg",           name:"Annual Report Covers",     client:"MRS Oil Nigeria PLC", cats:["print","3d"] },
+
+    // 3D / look dev
+    { img:"env-design.jpg",           name:"Environment Design Studies", client:"Personal · LookDev", cats:["3d"] },
+
+    // Experiential / events
+    { img:"google-knows.jpg",         name:"Google Knows · Activation", client:"Google",             cats:["event","3d"] },
+    { img:"youtube-booth.jpg",        name:"For Every You · Booth",     client:"YouTube",             cats:["event","3d"] },
+    { img:"google-football.jpg",      name:"Football with the Google App", client:"Google",         cats:["event","3d"] },
+    { img:"redbull-event.jpg",        name:"Red Bull Event Build",      client:"Red Bull",            cats:["event","3d"] },
+    { img:"singoff.jpg",              name:"Sing-Off Nigeria · Stage",  client:"Sing-Off",            cats:["event","3d"] },
+    { img:"visa-hackathon.jpg",       name:"Visa Hackathon Lagos",      client:"Visa",                cats:["event","3d"] },
+    { img:"redefini.jpg",             name:"Redefini · Outdoor Gala",   client:"Redefini",            cats:["event","3d"] },
+    { img:"heineken.jpg",              name:"Display Build",             client:"Heineken",            cats:["event","3d"] },
+    { img:"disaronno.jpg",             name:"Bar Build · Studies",       client:"Disaronno",           cats:["event","3d"] },
+    { img:"bet24-truck.jpg",           name:"Activation Truck",          client:"Bet24",               cats:["event","3d"] },
+    { img:"9mobile.jpg",               name:"Flagship Store · Look Dev", client:"9mobile",             cats:["event","3d"] },
+  ];
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // Build the grid
+  // ──────────────────────────────────────────────────────────────────────────
+  const grid = document.getElementById('grid');
+  function renderGrid(filter='all') {
+    grid.innerHTML = '';
+    const list = filter === 'all' ? ARCHIVE : ARCHIVE.filter(p => p.cats.includes(filter));
+    list.forEach(p => {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      tile.innerHTML = `
+        <img src="img/${p.img}" alt="${p.name} — ${p.client}" loading="lazy"/>
+        <div class="caption">
+          <div class="name">${p.name}</div>
+          <div class="meta">${p.client}</div>
+        </div>
+      `;
+      tile.addEventListener('click', () => openLightbox(p));
+      grid.appendChild(tile);
+    });
+  }
+  renderGrid();
+
+  // Filters
+  document.querySelectorAll('.filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid(btn.dataset.filter);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // Lightbox
+  // ──────────────────────────────────────────────────────────────────────────
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lbImg');
+  const lbName = document.getElementById('lbName');
+  const lbClient = document.getElementById('lbClient');
+
+  function openLightbox(p) {
+    lbImg.src = `img/${p.img}`;
+    lbImg.alt = p.name;
+    lbName.textContent = p.name;
+    lbClient.textContent = '· ' + p.client;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.id === 'lbClose') closeLightbox(); });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // Reveal-on-scroll
+  // ──────────────────────────────────────────────────────────────────────────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Duplicate marquee track for seamless loop
+  const t1 = document.getElementById('track1');
+  t1.parentNode.appendChild(t1.cloneNode(true));
+</script>
+
+</body>
+</html>
